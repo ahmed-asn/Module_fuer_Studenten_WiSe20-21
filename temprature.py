@@ -5,9 +5,9 @@ from ds18x20 import DS18X20
 
 def read_temp(pin):
     ds_pin = Pin(pin)
-    ds_sensor = DS18X20(OneWire(ds_pin))
+    sensor = DS18X20(OneWire(ds_pin))
 
-    roms = ds_sensor.scan()
+    roms = sensor.scan()
     print("DS Geräte:", roms)
 
     
@@ -16,7 +16,7 @@ def read_temp(pin):
     while not sensor:
     
         if len(roms) != 0:
-            return(str(ds_sensor.read_temp(roms[0]))
+            return(sensor)
 
         else :
             print("Keine Sensoren gefunden! Schaltung kontrollieren, in kürze wird erneut gesucht...")
@@ -25,3 +25,5 @@ def read_temp(pin):
                    print("3 mal Fehlgeschlagen! Versuchen Sies später erneut.")
                    return(None)
             
+            
+    
